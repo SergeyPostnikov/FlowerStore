@@ -19,3 +19,11 @@ def consultation(request):
 
 def card(request):
     return render(request, 'catalog.html', context={})
+
+
+def result(request):
+    return render(request, 'result.html', context={})
+
+
+def quiz(request):
+    return render(request, 'quiz.html')

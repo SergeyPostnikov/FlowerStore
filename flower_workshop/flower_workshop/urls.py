@@ -19,13 +19,15 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from flower_store.views import index, catalog, order
+from flower_store.views import index, catalog, order, result, quiz
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('catalog/', catalog, name='catalog'),
     path('order/', order, name='order'),
+    path('result/', result, name='result'),
+    path('quiz/', quiz, name='quiz'),
 ]
 
 if settings.DEBUG:
