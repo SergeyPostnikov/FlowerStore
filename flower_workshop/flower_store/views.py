@@ -9,6 +9,10 @@ def order(request):
     return render(request, 'order.html', context={})
 
 
+def order_step(request):
+    return render(request, 'order-step.html', context={})
+
+
 def catalog(request):
     return render(request, 'catalog.html', context={})
 
@@ -27,3 +31,7 @@ def result(request):
 
 def quiz(request):
     return render(request, 'quiz.html')
+
+
+def quiz_step(request):
+    return render(request, 'quiz-step.html')
