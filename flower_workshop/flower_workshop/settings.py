@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
     # local
     'users2.apps.Users2Config',
     'bouquets.apps.BouquetsConfig',
