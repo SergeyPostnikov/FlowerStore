@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users2.apps.Users2Config',
     'bouquets.apps.BouquetsConfig',
     'orders.apps.OrdersConfig',
+    'home.apps.HomeConfig'
 ]
 
 MIDDLEWARE = [

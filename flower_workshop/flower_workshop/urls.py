@@ -17,12 +17,11 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 from flower_store.views import card
 from flower_store.views import catalog
 from flower_store.views import consultation
-from flower_store.views import index
 from flower_store.views import order
 from flower_store.views import order_step
 from flower_store.views import quiz
@@ -31,7 +30,7 @@ from flower_store.views import result
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('home/', include('home.urls'), name='home'),
     path('catalog/', catalog, name='catalog'),
     path('order/', order, name='order'),
     path('order-step/', order_step, name='order-step'),
