@@ -21,8 +21,8 @@ def consultation(request):
     return render(request, 'consultation.html', context={})
 
 
-def card(request):
-    return render(request, 'catalog.html', context={})
+def card(request, pk):
+    return render(request, 'card.html', context={})
 
 
 def result(request):

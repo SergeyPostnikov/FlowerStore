@@ -19,7 +19,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
+from flower_store.views import card
 from flower_store.views import catalog
+from flower_store.views import consultation
 from flower_store.views import index
 from flower_store.views import order
 from flower_store.views import order_step
@@ -36,6 +38,8 @@ urlpatterns = [
     path('result/', result, name='result'),
     path('quiz/', quiz, name='quiz'),
     path('quiz-step/', quiz_step, name='quiz-step'),
+    path('card/<int:pk>/', card, name='card'),
+    path('consultation/', consultation, name='consultation')
 ]
 
 if settings.DEBUG:
