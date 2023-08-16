@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local
-    'flower_store.apps.FlowerStoreConfig',
     'users2.apps.Users2Config',
     'bouquets.apps.BouquetsConfig',
     'orders.apps.OrdersConfig',
-    'home.apps.HomeConfig'
+    'home.apps.HomeConfig',
+    'consultation.apps.ConsultationConfig'
 ]
 
 MIDDLEWARE = [
