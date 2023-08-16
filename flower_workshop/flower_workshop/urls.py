@@ -19,22 +19,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from flower_store.views import card
-from flower_store.views import catalog
 from flower_store.views import consultation
-from flower_store.views import quiz
-from flower_store.views import quiz_step
-from flower_store.views import result
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls'), name='home'),
     path('order/', include('orders.urls'), name='order'),
-    path('catalog/', catalog, name='catalog'),
-    path('result/', result, name='result'),
-    path('quiz/', quiz, name='quiz'),
-    path('quiz-step/', quiz_step, name='quiz-step'),
-    path('card/<int:pk>/', card, name='card'),
+    path('bouquets/', include('bouquets.urls')),
     path('consultation/', consultation, name='consultation')
 ]
 
