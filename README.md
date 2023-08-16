@@ -7,3 +7,9 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
+
+## 📦 Install Python Packages
+```shell
+pip install Pillow
+pip freeze > requirements.txt
+```
