@@ -22,8 +22,6 @@ from django.urls import include, path
 from flower_store.views import card
 from flower_store.views import catalog
 from flower_store.views import consultation
-from flower_store.views import order
-from flower_store.views import order_step
 from flower_store.views import quiz
 from flower_store.views import quiz_step
 from flower_store.views import result
@@ -31,9 +29,8 @@ from flower_store.views import result
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls'), name='home'),
+    path('order/', include('orders.urls'), name='order'),
     path('catalog/', catalog, name='catalog'),
-    path('order/', order, name='order'),
-    path('order-step/', order_step, name='order-step'),
     path('result/', result, name='result'),
     path('quiz/', quiz, name='quiz'),
     path('quiz-step/', quiz_step, name='quiz-step'),
