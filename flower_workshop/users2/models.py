@@ -3,7 +3,14 @@ from django.db import models
 
 
 class User2(AbstractUser):
-    on_vacation = models.BooleanField('в отпуске', default=False, db_index=True)
+    class Types(models.TextChoices):
+        CLIENT = 'CL', 'Клиент'
+        FLORIST = 'FL', 'Флорист'
+        CONSULTANT = 'CO', 'Консультант'
+        MANAGER = 'MA', 'Менеджер'
+
+    on_vacation = models.BooleanField('В отпуске', default=False, db_index=True)
+    type = models.CharField('Тип', max_length=2, choices=Types.choices, default=Types.CLIENT, db_index=True)
 
     class Meta:
         verbose_name = 'пользователь'
