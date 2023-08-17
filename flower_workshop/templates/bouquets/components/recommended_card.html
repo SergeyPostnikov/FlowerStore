@@ -1,0 +1,12 @@
+ {% load static humanize %}
+
+<div class="recommended__block recommended__block_first"
+     {% if bouquet.image %}
+        style="background: url({{ bouquet.image.url }}) no-repeat center bottom / cover;"
+     {% endif %}
+>
+    <div class="recommended__block_elems ficb">
+        <span class="recommended__block_intro">{{ bouquet.name }}</span>
+        <span class="recommended__block_price">{{ bouquet.price|floatformat|intcomma }} руб</span>
+    </div>
+</div>
