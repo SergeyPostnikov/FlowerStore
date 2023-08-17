@@ -42,11 +42,13 @@ class BouquetAdmin(admin.ModelAdmin):
     list_display = [
         'name',
         'price',
+        'recommended',
         'description',
     ]
     list_filter = [
         'events',
         'flowers__flower',
+        'recommended',
     ]
     inlines = [
         BouquetFlowerInline,
