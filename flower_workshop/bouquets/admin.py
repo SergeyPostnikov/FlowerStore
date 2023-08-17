@@ -46,7 +46,7 @@ class BouquetAdmin(admin.ModelAdmin):
     ]
     list_filter = [
         'events',
-        'flowers',
+        'flowers__flower',
     ]
     inlines = [
         BouquetFlowerInline,
