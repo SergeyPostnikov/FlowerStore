@@ -1,6 +1,6 @@
 FROM python:3.11.0-slim
 
-WORKDIR /
+WORKDIR /app
 
 RUN pip install "poetry==1.3.1"
 

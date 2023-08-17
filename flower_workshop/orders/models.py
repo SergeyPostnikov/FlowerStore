@@ -9,7 +9,7 @@ from bouquets.models import Bouquet
 # Create your models here.
 class StatusOrder(models.TextChoices):
     unprocessed = 'Необработанный заказ', 'Необработанный заказ'
-    in_work = 'Готовиться рестораном', 'Готовиться рестораном'
+    in_work = 'Собирается флористом', 'Собирается флористом'
     delivery = 'Передан курьеру', 'Передан курьеру'
     completed = 'Заказ завершён', 'Заказ завершён'
 
@@ -25,7 +25,7 @@ class Order(TimeStampedModel):
         on_delete=models.PROTECT
     )
     price = models.DecimalField(
-        max_digits=8,
+        max_digits=9,
         decimal_places=2,
     )
     from_delivery_time = models.DateTimeField()
