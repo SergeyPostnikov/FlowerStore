@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  django:
+    restart: always
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    container_name: flowerstore_django
+    volumes:
+      - ./flower_workshop/:/app:z
+      - ./flower_workshop/consultation/:/consultation
+      - ./flower_workshop/flower_store/:/flower_store
+      - ./flower_workshop/flower_workshop/:/flower_workshop
+      - ./flower_workshop/home/:/home
+      - ./flower_workshop/orders/:/orders
+      - ./flower_workshop/users2/:/users2
+

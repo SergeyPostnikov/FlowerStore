@@ -1,0 +1,9 @@
+# ignore all
+
+**
+
+# except
+!flower_workshop/**
+!poetry.lock
+!pyproject.toml
+!entrypoint.sh

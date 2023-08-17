@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
+from orders.models import Order
+
 
 def order(request):
+
     return render(request, 'orders/order.html', context={})
 
 

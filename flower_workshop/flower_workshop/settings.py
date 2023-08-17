@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+
     # local
     'users2.apps.Users2Config',
     'bouquets.apps.BouquetsConfig',
