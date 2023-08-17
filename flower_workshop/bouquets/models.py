@@ -46,9 +46,10 @@ class BouquetFlower(models.Model):
 class Bouquet(models.Model):
     name = models.CharField('Название', max_length=100, blank=True, db_index=True)
     price = models.DecimalField(max_digits=9, decimal_places=2, default=Decimal('0'))
-    image = models.ImageField(upload_to="bouquets_images", blank=True, null=True)
+    image = models.ImageField(upload_to='bouquets_images', blank=True, null=True)
     description = models.TextField('Описание', blank=True)
     events = models.ManyToManyField(Event, verbose_name='События', db_index=True)
+    recommended = models.BooleanField('В рекомендованных', default=False, db_index=True)
 
     class Meta:
         verbose_name = 'Букет'
