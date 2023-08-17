@@ -9,12 +9,14 @@ class User2Admin(UserAdmin):
     list_display = (
         'email',
         'first_name',
+        'type',
         'on_vacation',
         'is_active',
         'is_staff',
         'is_superuser',
     )
     list_filter = (
+        'type',
         'on_vacation',
         'is_superuser',
         'is_active',
