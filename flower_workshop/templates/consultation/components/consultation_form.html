@@ -1,0 +1,21 @@
+{% load static %}
+<form hx-post="{% url 'consultation:submit_form' %}" class="consultation__form" hx-swap="outerHTML">
+    <input type="text" name="name" class="consultation__form_input" placeholder="Введите Имя" required>
+
+    <input id="phone_input" type="text" name="phone" class="consultation__form_input" placeholder="+ 7 (999) 000 00 00"
+           required>
+    <button type="submit" class="consultation__form_btn">Отправить</button>
+    {% if form.errors %}
+        <div class="errors">
+            {{ form.non_field_errors }}
+            {{ form.name.errors }}
+            {{ form.phone.errors }}
+        </div>
+    {% endif %}
+</form>
+<script>
+    IMask(
+        document.getElementById('phone_input'),
+        {mask: '+{7} (000) 000-00-00'}
+    );
+</script>
