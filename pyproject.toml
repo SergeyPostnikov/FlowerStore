@@ -6,7 +6,7 @@ authors = ["Pavel2232 <106510078+Pavel2232@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 asgiref = "3.7.2"
 django = "4.2.4"
 django-model-utils = "4.3.1"
@@ -15,6 +15,7 @@ typing-extensions = "4.7.1"
 django-phonenumber-field = "^7.1.0"
 phonenumbers = "^8.13.18"
 pillow = "^10.0.0"
+django-htmx = "^1.16.0"
 
 
 [build-system]
