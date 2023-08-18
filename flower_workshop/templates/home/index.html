@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Flower Shop</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'css/main.css' %}">	
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="https://unpkg.com/imask"></script>
 </head>
 <body>
 	<div class="mainBg">
@@ -84,7 +85,7 @@
 				<div class="title consultation__title">Оставьте заявку на консультацию</div>
 				<form action="#" class="consultation__form">
 					<input type="text" name="fname" class="consultation__form_input" placeholder="Введите Имя" required>
-					<input type="text" name="tel" class="consultation__form_input" placeholder="+ 7 (999) 000 00 00" required>
+					<input id="phone_input" type="text" name="tel" class="consultation__form_input" placeholder="+ 7 (999) 000 00 00" required>
 					<button type="submit" class="consultation__form_btn">Отправить</button>
 				</form>
 			</div>
@@ -107,5 +108,12 @@
 			</div>
 		</div>
 	</footer>
+    <script>
+        const element = document.getElementById('phone_input');
+        const maskOptions = {
+          mask: '+{7} (000) 000-00-00'
+        };
+        const mask = IMask(element, maskOptions);
+    </script>
 </body>
 </html>
