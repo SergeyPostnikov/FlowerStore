@@ -1,3 +1,19 @@
 from django.contrib import admin
+from .models import Consultation
 
-# Register your models here.
+@admin.register(Consultation)
+class CounsultationAdmin(admin.ModelAdmin):
+    search_fields = [
+        'name',
+        'phone',
+    ]
+    list_display = [
+        'phone',
+        'name',
+        'status',
+        'florist',
+    ]
+    list_filter = [
+        'status',
+        'florist',
+    ]
