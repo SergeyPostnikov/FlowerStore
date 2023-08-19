@@ -21,7 +21,11 @@
                             {% endfor %}
 						</div>
 					</div>
-					<button class="btn largeBtn card__btn">Заказать букет</button>
+					<button class="btn largeBtn card__btn"
+                            onclick="window.location.assign('{% url 'order' %}?bouquet_id={{ bouquet.pk }}')"
+                    >
+                        Заказать букет
+                    </button>
 				</div>
 			</div>
 		</div>
