@@ -1,10 +1,12 @@
+from django.urls import path
+
 from .views import card
 from .views import catalog
 from .views import quiz
 from .views import quiz_step
 from .views import result
 
-from django.urls import path
+app_name = 'bouquets'
 
 urlpatterns = [
     path('catalog/', catalog, name='catalog'),
