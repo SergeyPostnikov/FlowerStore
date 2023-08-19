@@ -1,5 +1,6 @@
 {% load static humanize %}
 <div class="recommended__block recommended__block_first"
+     onclick="window.location.assign('{% url 'bouquets:card' pk=bouquet.pk %}')"
      {% if bouquet.image %}
         style="background: url({{ bouquet.image.url }}) no-repeat center bottom / cover;"
      {% endif %}
