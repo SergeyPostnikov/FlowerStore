@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 
 from .models import Bouquet
 
@@ -14,7 +15,7 @@ def catalog(request):
 
 
 def card(request, pk):
-    return render(request, 'bouquets/card.html', context={})
+    return render(request, 'bouquets/card.html', context={'bouquet': get_object_or_404(Bouquet, pk=pk)})
 
 
 def result(request):

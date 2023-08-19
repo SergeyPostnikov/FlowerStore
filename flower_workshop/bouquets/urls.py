@@ -14,5 +14,4 @@ urlpatterns = [
     path('quiz/', quiz, name='quiz'),
     path('quiz-step/', quiz_step, name='quiz-step'),
     path('card/<int:pk>/', card, name='card'),
-
 ]
