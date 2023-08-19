@@ -170,6 +170,11 @@ bottom: 0;
 	width: 398px;
 	height: 400px;
 	margin-right: 9px;
+	cursor: pointer;
+	transition: .3s;
+}
+.recommended__block:hover {
+	opacity: 0.8;
 }
 .recommended__block:last-child {
 	margin-right: 0;
