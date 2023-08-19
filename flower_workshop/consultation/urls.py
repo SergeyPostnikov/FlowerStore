@@ -6,5 +6,5 @@ app_name = "consultation"
 
 urlpatterns = [
     path('', consultation, name='consultation'),
-    path('summit/', ConsultationFormView.as_view(), name="submit_form"),
+    path('submit/', ConsultationFormView.as_view(), name="submit_form"),
 ]
