@@ -1,0 +1,13 @@
+{% if page_obj.has_next %}
+    <button id="next_btn"
+            class="btn largeBtn catalog__btn"
+            hx-get="{% url 'bouquets:catalog' %}?page={{ page_obj.next_page_number }}"
+            hx-swap-oob="outerHTML"
+            hx-target=".catalog__block"
+            hx-swap="beforeend"
+    >
+        Показать ещё
+    </button>
+{% else %}
+    <button hx-swap-oob="delete" id="next_btn"></button>
+{% endif %}
