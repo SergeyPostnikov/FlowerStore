@@ -25,7 +25,7 @@
 				<div class="title">Рекомендуем</div>
 				<div class="recommended__elems ficb">
                     {% for recommended_bouquet in recommended_bouquets %}
-					    {% include 'bouquets/components/recommended_card.html' with bouquet=recommended_bouquet only %}
+					    {% include 'bouquets/components/bouquet_card.html' with bouquet=recommended_bouquet only %}
                     {% endfor %}
 				</div>
 				<button class="btn recommended__btn">Показать всю коллекцию</button>

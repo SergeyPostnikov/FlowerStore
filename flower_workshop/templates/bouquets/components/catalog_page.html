@@ -1,0 +1,6 @@
+<div class="recommended__elems ficb recommended__elems_first">
+    {% for bouquet in page_obj %}
+        {% include 'bouquets/components/bouquet_card.html' with bouquet=bouquet only %}
+    {% endfor %}
+</div>
+{% include 'bouquets/components/more_btn.html' %}
