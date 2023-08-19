@@ -186,6 +186,7 @@ bottom: 0;
 .recommended__block_elems {
 	width: 100%;
 	padding: 15px;
+	background: hsl(0deg 0% 100% / 60%);
 }
 .recommended__btn {
 	width: 100%;
