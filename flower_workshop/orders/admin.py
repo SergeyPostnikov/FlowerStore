@@ -8,4 +8,8 @@ from orders.models import Order
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    ...
+    raw_id_fields = [
+        'florist',
+        'courier',
+        'client',
+    ]
