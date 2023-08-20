@@ -17,3 +17,6 @@ class CounsultationAdmin(admin.ModelAdmin):
         'status',
         'florist',
     ]
+    raw_id_fields = [
+        'florist',
+    ]
