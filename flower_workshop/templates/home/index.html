@@ -11,7 +11,9 @@
                         <h1 class="banner__title">Мастерская цветов</h1>
                         <p class="banner__text">Подберем для вас букет за два шага, который идеально подойдет под вашу
                             ситуацию</p>
-                        <button class="btn banner__btn">Подобрать букет</button>
+                        <button class="btn banner__btn" onclick='goto(`{% url "bouquets:quiz_delivery_step" %}`)'>
+                            Подобрать букет
+                        </button>
                     </div>
                     <img src="{% static 'img/bannerImg.png' %}" alt="banner Img" class="banner__img">
                 </div>
@@ -29,9 +31,7 @@
                         {% include 'bouquets/components/bouquet_card.html' with bouquet=recommended_bouquet only %}
                     {% endfor %}
                 </div>
-                <button onclick="window.location.assign('{% url 'bouquets:catalog' %}')"
-                        class="btn recommended__btn"
-                >
+                <button class="btn recommended__btn" onclick='goto(`{% url 'bouquets:catalog' %}`)'>
                     Показать всю коллекцию
                 </button>
             </div>
