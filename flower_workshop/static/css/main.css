@@ -521,6 +521,7 @@ color: #ABABAB;
 .result__block_img {
 	width: 398px;
 	height: 397px;
+	object-fit: cover;
 }
 .result__items {
 	width: 396px;

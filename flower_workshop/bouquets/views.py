@@ -1,8 +1,13 @@
-from django.core.paginator import Paginator
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+import random
+from decimal import Decimal
 
-from .models import Bouquet
+from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+
+from .models import Bouquet, Event
+
+TOTAL_STEPS = 2
 
 
 def catalog(request):
@@ -19,12 +24,46 @@ def card(request, pk):
 
 
 def result(request):
-    return render(request, 'bouquets/result.html', context={})
+    event_id = request.GET.get('event_id')
+    price_from = Decimal(request.GET.get('price_from', '0'))
+    price_to = Decimal(request.GET.get('price_to', '999999'))
+    bouquets = Bouquet.objects.filter(price__gte=price_from, price__lte=price_to)
+    if event_id and event_id != 'None':
+        events = [get_object_or_404(Event, pk=event_id), ]
+        bouquets.filter(events__in=events)
+
+    if bouquets:
+        context = {
+            "bouquet": random.choice(list(bouquets)),
+            "title": "Мы подобрали специально для Вас",
+        }
+    else:
+        context = {
+            "bouquet": None,
+            "title": "К сожалению, по вашему запросу ничего не нашлось",
+        }
+    return render(request, 'bouquets/result.html', context)
 
 
-def quiz(request):
-    return render(request, 'bouquets/quiz.html')
+def quiz_delivery(request):
+    return render(
+        request,
+        'bouquets/quiz.html',
+        context={
+            'step': 1,
+            'total_steps': TOTAL_STEPS,
+            'events': Event.objects.all(),
+        },
+    )
 
 
-def quiz_step(request):
-    return render(request, 'bouquets/quiz-step.html')
+def quiz_payment(request):
+    return render(
+        request,
+        'bouquets/quiz-step.html',
+        context={
+            'step': 2,
+            'total_steps': TOTAL_STEPS,
+            'event_id': request.GET.get('event_id'),
+        },
+    )
