@@ -7,26 +7,17 @@
 			<div class="quiz">
 				<div class="quiz__back ">
 					<a href="#" class="quiz__back_link fic"><img src="{% static 'img/arrow-left.svg' %}" alt="arrow-left" class="arrowLeft">
-					<span class="quiz__back_intro">Назад</span></a>
+					<span class="quiz__back_intro" onclick='goto(`{% url "bouquets:quiz_delivery_step" %}`)'>Назад</span></a>
 				</div>
 				<div class="quiz__block">
 					<h1 class="quiz__title">На какой бюджет рассчитываете?</h1>
 					<div class="quiz__elems fic">
-						<button class="quiz__elem">До 1 000 руб</button>
-						<button class="quiz__elem">1 000 - 5 000 руб</button>
-						<button class="quiz__elem">от 5 000 руб</button>
-						<button class="quiz__elem">Не имеет значения</button>
+						<button class="quiz__elem" onclick='goto(`{% url 'bouquets:result' %}?event_id={{ event_id }}&price_to=1000`)'>До 1 000 руб</button>
+						<button class="quiz__elem" onclick='goto(`{% url 'bouquets:result' %}?event_id={{ event_id }}&price_from=1000&price_to=5000`)'>1 000 - 5 000 руб</button>
+						<button class="quiz__elem" onclick='goto(`{% url 'bouquets:result' %}?event_id={{ event_id }}&price_from=5000`)'>от 5 000 руб</button>
+						<button class="quiz__elem" onclick='goto(`{% url 'bouquets:result' %}?event_id={{ event_id }}`)'>Не имеет значения</button>
 					</div>
-					<div class="quiz__progress">
-						<div class="quiz__progress_step">
-							<span class="quiz__progress_num">1</span>
-							<span class="quiz__progress_in"> шаг из </span>
-							<span class="quiz__progress_num">2</span>
-						</div>
-						<div class="quiz__progress_line">
-							<div class="quiz__progress_lineActive"></div>
-						</div>
-					</div>
+					{% include 'bouquets/components/quiz_progress.html' with step=step total_steps=total_steps progress="100%" only %}
 				</div>
 			</div>
 		</div>

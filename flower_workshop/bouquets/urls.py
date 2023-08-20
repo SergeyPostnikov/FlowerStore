@@ -1,17 +1,13 @@
 from django.urls import path
 
-from .views import card
-from .views import catalog
-from .views import quiz
-from .views import quiz_step
-from .views import result
+from .views import card, catalog, quiz_delivery, quiz_payment, result
 
 app_name = 'bouquets'
 
 urlpatterns = [
     path('catalog/', catalog, name='catalog'),
     path('result/', result, name='result'),
-    path('quiz/', quiz, name='quiz'),
-    path('quiz-step/', quiz_step, name='quiz-step'),
+    path('quiz/drlivery-step/', quiz_delivery, name='quiz_delivery_step'),
+    path('quiz/payment-step/', quiz_payment, name='quiz_payment_step'),
     path('card/<int:pk>/', card, name='card'),
 ]

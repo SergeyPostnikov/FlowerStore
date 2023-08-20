@@ -21,9 +21,7 @@
                             {% endfor %}
 						</div>
 					</div>
-					<button class="btn largeBtn card__btn"
-                            onclick="window.location.assign('{% url 'order' %}?bouquet_id={{ bouquet.pk }}')"
-                    >
+					<button class="btn largeBtn card__btn" onclick='goto(`{% url 'order' %}?bouquet_id={{ bouquet.pk }}`)'>
                         Заказать букет
                     </button>
 				</div>
