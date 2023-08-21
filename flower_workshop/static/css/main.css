@@ -54,8 +54,6 @@ input::placeholder {
 	color: #FFFFFF;
 	border: none;
 	cursor: pointer;
-	padding: 21px 140px;
-    text-decoration: none;
 }
 .btn:hover {
 	background: #14A87B;
@@ -653,7 +651,6 @@ input[type=radio]:checked + label {
 	width: 365px;
 	height: 57px;
 }
-
 .order__form_btn {
 	width: 365px;
 	height: 57px;

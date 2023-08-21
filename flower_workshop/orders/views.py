@@ -1,14 +1,9 @@
 from django.shortcuts import render
-from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
 
-from orders.models import Order
-
-from orders.forms import OrderForm
-
-from users2.models import User2
-
 from bouquets.models import Bouquet
+from orders.models import Order
+from users2.models import User2
 
 
 @csrf_exempt
