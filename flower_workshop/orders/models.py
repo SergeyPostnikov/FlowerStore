@@ -28,6 +28,7 @@ class Order(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='client_orders',
         verbose_name='Клиент',
     )
@@ -66,6 +67,7 @@ class Order(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='courier_orders',
         verbose_name='Курьер',
     )
@@ -73,6 +75,7 @@ class Order(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='florist_orders',
         verbose_name='Флорист',
     )
