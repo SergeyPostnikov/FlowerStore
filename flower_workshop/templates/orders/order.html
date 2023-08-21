@@ -11,7 +11,7 @@
 						<form action="{% url "order-step"%}" class="order__form" method="POST">
 							<div class="order__form_block ficb">
 								<input type="text" name="client_name" class="order__form_input" placeholder="Введите Имя" required>
-								<input type="text" name="tel" class="order__form_input" placeholder="+ 7 (999) 000 00 00" required>
+								<input id="order_phone_input" type="text" name="tel" class="order__form_input" placeholder="+ 7 (999) 000 00 00" required>
 								<input type="text" name="adres" class="order__form_input" placeholder="Адрес доставки" required>
                                 <input type="hidden" name="bouquet_id" value="{{ request.GET.bouquet_id }}" class="order__form_input" placeholder="Адрес доставки">
 							</div>
@@ -61,5 +61,9 @@
 			// console.log(e.target)
 			console.log(e.target.value)
 		}
+        IMask(
+            document.getElementById('order_phone_input'),
+            {mask: '+{7} (000) 000-00-00'}
+        );
 	</script>
 {% endblock content %}
