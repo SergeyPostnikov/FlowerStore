@@ -1,42 +1,39 @@
-import re
-
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.template.context_processors import csrf
+from django.views.decorators.csrf import csrf_exempt
 
-from bouquets.models import Bouquet
 from orders.models import Order
+
+from orders.forms import OrderForm
+
 from users2.models import User2
 
-
-def order_view(request):
-    if request.method == 'GET':
-        user = User2.objects.last()
-        bouquet_id = request.GET.get('bouquet_id')
-        print(bouquet_id)
-        if bouquet_id:
-            bouquet = get_object_or_404(Bouquet, pk=bouquet_id)
-            # time = re.findall(r'(\d+:\d+)', request.GET.get('orderTime'))
-            # < QueryDict: {'fname': ['dfsds'], 'tel': ['sdffsd'], 'adres': ['sdfsdffd'], 'orderTime': ['с 12:00 до 14:00']} >
-            ##TODO подставить букет и цену
-            # order = Order.objects.create(
-            #     client=user,
-            #     bouquet=...,
-            #     price=...,
-            #     # from_delivery_time=time[0],
-            #     # to_delivery_time=time[1],
-            #     address=request.GET.get('adres'),
-            #     phone=request.GET.get('tel'),
-            #     courier=user,
-            #     florist=user,
-            #
-            # )
-            context = {
-                'bouquet': bouquet,
-            }
-            return render(request, 'orders/order.html', context)
-        raise Http404
+from bouquets.models import Bouquet
 
 
+@csrf_exempt
+def create_order(request):
+    global bouquet
+    bouquet = request.GET
+    return render(request, 'orders/order.html', context={})
+
+
+@csrf_exempt
 def order_step(request):
+    user = User2.objects.last()
+    global bouquet
+    print(bouquet.get('bouquet_id'))
+    bouquet_obj = Bouquet.objects.get(id=bouquet.get('bouquet_id'))
+    print(request.POST)
+    order = Order.objects.create(
+        client=user,
+        bouquet=bouquet_obj,
+        price=bouquet_obj.price,
+        delivery_time=request.POST.get('orderTime'),
+        address=request.POST.get('adres'),
+        phone=request.POST.get('tel'),
+        courier=user,
+        florist=user,
+
+    )
     return render(request, 'orders/order-step.html', context={})
