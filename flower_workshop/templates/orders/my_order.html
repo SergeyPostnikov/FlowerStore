@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static humanize %}
+{% block title %}{{ bouquet.name }}{% endblock %}
+{% block content %}
+    <section id="card">
+        <div class="container">
+            <div class="card ficb">
+                <div class="card__block card__block_first">
+                    <img src="{{ bouquet.image.url }}" alt="{{ bouquet.name }}" class="card__img">
+                </div>
+                <div class="card__block card__block_sec">
+                    <div class="title">✓ Заказ успешно оплачен</div>
+                    <div class="title">{{ bouquet.name }}</div>
+                    <div class="card__block_price">{{ bouquet.price|floatformat|intcomma }} руб</div>
+                    <div class="card__elems ">
+                        <span class="card__elems_intro">Состав</span>
+                        <div class="card__items">
+                            {% for bouquet_flower in bouquet.flowers.all %}
+                                <span class="card_items_intro">
+                                    {{ bouquet_flower.flower }} - {{ bouquet_flower.quantity }} шт.
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card__elems ">
+                        <span class="card__elems_intro">Номер закзаза: <br><b>{{ order.pk }}</b></span>
+                    </div>
+                    <div class="card__elems ">
+                        <span class="card__elems_intro">Время доставки: <br><b>{{ order.get_delivery_time_display }}</b></span>
+                    </div>
+                    <div class="card__elems ">
+                        <span class="card__elems_intro">Статус: <br><b>{{ order.get_status_display }}</b></span>
+                    </div>
+                    <button class="btn largeBtn card__btn" onclick='goto(`{% url 'bouquets:catalog' %}`)'>
+                        Посмотреть что есть ещё
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="consultation">
+        <div class="container">
+            <div class="consultation">
+                <div class="title consultation__title">Оставьте заявку на консультацию</div>
+                {% include 'consultation/components/consultation_form.html' %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

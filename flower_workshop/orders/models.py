@@ -8,7 +8,7 @@ from bouquets.models import Bouquet
 
 # Create your models here.
 class StatusOrder(models.TextChoices):
-    unprocessed = 'UP', 'Необработанный заказ'
+    unprocessed = 'UP', 'Необработанный заказ',
     in_work = 'IW', 'Собирается флористом'
     delivery = 'DL', 'Передан курьеру'
     completed = 'CP', 'Заказ завершён'
@@ -28,8 +28,14 @@ class Order(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='client_orders',
         verbose_name='Клиент',
+    )
+    client_name = models.CharField(
+        max_length=80,
+        verbose_name='Имя клиента',
+        db_index=True,
     )
     bouquet = models.ForeignKey(
         Bouquet,
@@ -66,6 +72,7 @@ class Order(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='courier_orders',
         verbose_name='Курьер',
     )
@@ -73,8 +80,13 @@ class Order(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='florist_orders',
         verbose_name='Флорист',
+    )
+    paid = models.BooleanField(
+        'Оплачен',
+        default=False,
     )
 
     class Meta:
@@ -82,4 +94,4 @@ class Order(TimeStampedModel):
         verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return self.status
+        return str(self.id)

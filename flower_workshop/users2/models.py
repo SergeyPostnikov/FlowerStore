@@ -6,7 +6,7 @@ class User2(AbstractUser):
     class Types(models.TextChoices):
         CLIENT = 'CL', 'Клиент'
         FLORIST = 'FL', 'Флорист'
-        CONSULTANT = 'CO', 'Консультант'
+        COURIER = 'CO', 'Курьер'
         MANAGER = 'MA', 'Менеджер'
 
     on_vacation = models.BooleanField('В отпуске', default=False, db_index=True)
@@ -17,4 +17,4 @@ class User2(AbstractUser):
         verbose_name_plural = 'пользователи'
 
     def __str__(self):
-        return '{0} - {1}. Email: {2}'.format(self.pk, self.first_name, self.email)
+        return '{1} ({2})'.format(self.pk, self.first_name, self.email)
