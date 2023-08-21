@@ -14,6 +14,15 @@ class StatusOrder(models.TextChoices):
     completed = 'CP', 'Заказ завершён'
 
 
+class IntervalOrder(models.TextChoices):
+    first = 'FRS', 'Как можно скорее'
+    two = 'TW', 'с 10:00 до 12:00'
+    three = 'TH', 'с 12:00 до 14:00'
+    four = 'FR', 'с 14:00 до 16:00'
+    five = 'FV', 'с 16:00 до 18:00'
+    six = 'SX', 'с 18:00 до 20:00'
+
+
 class Order(TimeStampedModel):
     client = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -32,11 +41,12 @@ class Order(TimeStampedModel):
         decimal_places=2,
         verbose_name='Сумма',
     )
-    from_delivery_time = models.DateTimeField(
-        verbose_name='Интервал доставки ОТ',
-    )
-    to_delivery_time = models.DateTimeField(
-        verbose_name='Интервал доставки ДО',
+    delivery_time = models.CharField(
+        max_length=17,
+        verbose_name='Интервал доставки',
+        choices=IntervalOrder.choices,
+        default=IntervalOrder.first,
+        db_index=True
     )
     address = models.CharField(
         max_length=300,
