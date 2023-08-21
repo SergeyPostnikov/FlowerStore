@@ -1,34 +1,51 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 from bouquets.models import Bouquet
 from orders.models import Order
-from users2.models import User2
+from django.utils.timezone import localtime, timedelta
 
 
 @csrf_exempt
 def create_order(request):
-    global bouquet
-    bouquet = request.GET
-    return render(request, 'orders/order.html', context={})
+    return render(request, 'orders/order.html')
 
 
 @csrf_exempt
 def order_step(request):
-    user = User2.objects.last()
-    global bouquet
-    print(bouquet.get('bouquet_id'))
-    bouquet_obj = Bouquet.objects.get(id=bouquet.get('bouquet_id'))
-    print(request.POST)
-    order = Order.objects.create(
-        client=user,
-        bouquet=bouquet_obj,
-        price=bouquet_obj.price,
-        delivery_time=request.POST.get('orderTime'),
-        address=request.POST.get('adres'),
-        phone=request.POST.get('tel'),
-        courier=user,
-        florist=user,
-
+    bouquet = get_object_or_404(Bouquet, pk=request.POST.get('bouquet_id'))
+    params = {
+        'client_name': request.POST.get('client_name'),
+        'bouquet': bouquet,
+        'price': bouquet.price,
+        'delivery_time': request.POST.get('orderTime'),
+        'address': request.POST.get('adres'),
+        'phone': request.POST.get('tel'),
+        'paid': False,
+    }
+    order = Order.objects.filter(**params).last()
+    if order and order.created <= localtime() - timedelta(minutes=5) or not order:
+        order = Order.objects.create(**params)
+    return render(
+        request,
+        'orders/order-step.html',
+        context={
+            'bouquet': bouquet,
+            'order': order,
+        }
     )
-    return render(request, 'orders/order-step.html', context={})
+
+
+def my_order(request, pk):
+    order = get_object_or_404(Order, pk=pk)
+    order.paid = True
+    order.save()
+    bouquet = order.bouquet
+    return render(
+        request,
+        'orders/my_order.html',
+        context={
+            'bouquet': bouquet,
+            'order': order,
+        }
+    )

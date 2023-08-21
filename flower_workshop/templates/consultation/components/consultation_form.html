@@ -6,7 +6,9 @@
            required>
     <button type="submit" class="consultation__form_btn">Отправить</button>
     {% if form.errors %}
-        <div class="errors">
+        <div class="errors"
+             style="padding: 1em 0; color: red; font-weight: bold;"
+        >
             {{ form.non_field_errors }}
             {{ form.name.errors }}
             {{ form.phone.errors }}
